@@ -1,0 +1,367 @@
+---
+title: "Seminar 12: Review"
+subtitle: "LSE ME314: Introduction to Data Science and Machine Learning"
+date-modified: "26 July 2025" 
+toc: true
+format: 
+    html:
+        embed-resources: true
+        code-overflow: wrap
+execute:
+  echo: true
+  eval: false
+---
+
+# Plan for today:
+
+- Practice questions
+
+- Q&A
+
+## Setup
+
+```{r}
+setwd("PATH_TO_GITHUB_REPO")
+```
+
+
+## Question 1: Probability
+
+Let's suppose we have a fair (evenly-weighted) twenty-sided die. For any given roll of this die we can talk about each outcome as an 'event' in the 'sample space' (set of all possible outcomes). In this case, the sample space is the set of integers from 1 through 20. We could denote that as $\Omega = \{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20\}$.
+
+Note that we can reason both about individual events in the sample space (e.g. rolling a $1$ or a $5$), or about combinations of those individual events (e.g. rolling less than $6$, or rolling an even number). This latter case, which is called the union of events, is governed by the third axiom of probability (additivity). We can simply add up the probabilities of the underlying events to calculate the probability of the combination. 
+
+#### 1a)
+
+What is the probability of rolling a 10 on a single roll of this die? 
+
+
+#### 1b)
+
+What is the probability of rolling a 10 or less on a single roll of this die?
+
+
+#### 1c)
+
+Imagine we roll the die twice in sequence (so each roll is independent). What is the probability of the first roll being a 20 and the second roll being a 1? (Note this is called a 'joint probability' and could be formally written as $P(roll1=20 \cap roll2=1)$.)
+
+
+## Question 2: Statistics and Regression
+
+In this question, we'll work with the mathematics student performance data that we used in Core ML 1 & 2. The dataset is structured as follows:
+
+__Dependent Variable__
+
+- G3: Final 3rd-year grade (numeric: from 0 to 20)
+
+__Explanatory Variables__
+
+- G1: 1st-year grade (numeric: from 0 to 20)
+- address: Student's home address type (binary: 'R' - rural or 'U' - urban)
+- absences: Number of school absences (numeric: from 0 to 93)
+- Walc: Weekend alcohol consumption (numeric: from 1 - very low to 5 - very high)
+- internet: Internet access at home (categorical: no or yes)
+- studytime: Weekly study time (numeric: 1 - 10 hours)
+- traveltime: home to school travel time (numeric: 1 - 4 hours)
+
+We fit the following multiple linear regression model:
+
+$$
+\begin{aligned}
+\hat{G}_{3,i} &= \hat{\beta}_0 \\
+&\quad + \hat{\beta}_1\,(\text{address}_i) \\
+&\quad + \hat{\beta}_2\,(\text{G1}_i) \\
+&\quad + \hat{\beta}_3\,(\text{absences}_i) \\
+&\quad + \hat{\beta}_4\,(\text{Walc}_i) \\
+&\quad + \hat{\beta}_5\,(\text{internet}_i) \\
+&\quad + \hat{\beta}_6\,(\text{studytime}_i) \\
+&\quad + \hat{\beta}_7\,(\text{traveltime}_i) \\
+&\quad + \hat{\varepsilon}_i
+\end{aligned}
+$$
+
+and get the resulting output:
+
+| Predictor | Estimate | Std. Error | t stat | P-value |
+|:---------------|----------:|-----------:|--------:|:------------|
+| (Intercept) | -2.24759 | 0.84820 | -2.650 | 0.00838 ** |
+| addressurban | 0.42680 | 0.35529 | 1.201 | 0.23037 |
+| G1 | 1.11023 | 0.04191 | 26.489 | < 2e-16 *** |
+| absences | 0.02848 | 0.01734 | 1.643 | 0.10127 |
+| Walc | 0.16278 | 0.11199 | 1.454 | 0.14686 |
+| internetyes | 0.29336 | 0.36932 | 0.794 | 0.42748 |
+| studytime | -0.11323 | 0.17111 | -0.662 | 0.50850 |
+| traveltime | -0.22720 | 0.20949 | -1.085 | 0.27878 |
+
+Multiple R-squared:  0.6545,	Adjusted R-squared:  0.6483 
+
+| Variable      | 2.5 %       | 97.5 %     |
+|---------------|-------------|------------|
+| (Intercept)   | -3.9152     | -0.5800    |
+| addressurban  | -0.2717     | 1.1253     |
+| G1            | 1.0278      | 1.1926     |
+| absences      | -0.0056     | 0.0626     |
+| Walc          | -0.0574     | 0.3830     |
+| internetyes   | -0.4327     | 1.0195     |
+| studytime     | -0.4496     | 0.2232     |
+| traveltime    | -0.6391     | 0.1847     |
+
+#### 2a)
+
+Interpret the coefficient for $G1$, including magnitude, direction, and statistical significance. 
+
+
+#### 2b)
+
+Interpret the $R^2$ value. 
+
+
+#### 2c)
+
+How do you interpret the coefficient for the intercept? Is this meaningful in our context?
+
+
+#### 2d)
+
+Interpret the coefficient for $addressurban$, including magnitude, direction, and statistical significance. 
+
+
+#### 2e) 
+
+Interpret the confidence intervals for $traveltime$. What can we say about statistical significance by looking at the confidence intervals __only__.
+
+
+## Question 3: Causal Inference
+
+The table below presents a hypothetical study involving twelve units. Potential outcomes are given as $Y_1$ and $Y_0$ for treatment $D$, where 1 represents treatment and 0 control. $X$ is a binary pre-treatment covariate that can take the value of 0 or 1. 
+
+| Unit | $Y_0$ | $Y_1$ | $D$ | $X$ | $Y$ |
+|------|-------|-------|-----|-----|-----|
+| 1    | 28    | 28    | 0   | 0   |     |
+| 2    | 16    | 20    | 0   | 0   |     |
+| 3    | 26    | 26    | 1   | 0   |     |
+| 4    | 22    | 26    | 1   | 0   |     |
+| 5    | 5     | 5     | 1   | 0   |     |
+| 6    | 12    | 10    | 0   | 1   |     |
+| 7    | 25    | 29    | 0   | 1   |     |
+| 8    | 19    | 24    | 1   | 1   |     |
+| 9    | 25    | 30    | 1   | 1   |     |
+| 10   | 16    | 21    | 0   | 1   |     |
+| 11   | 26    | 30    | 1   | 1   |     |
+| 12   | 14    | 17    | 1   | 1   |     |
+
+
+#### 3a)
+
+Fill in the _observed_ values of $Y$ for each observation.
+
+
+#### 3b)
+
+Calculate the __true__ average treatment effect (ATE). Be sure to show your working.
+
+
+#### 3c)
+
+How many of the 24 potential outcomes in the table will be observed?
+
+
+#### 3d)
+
+Calculate the __estimated__ ATE using only the observed outcomes. Be sure to show your working. 
+
+
+#### 3e)
+
+Calculate the average values of $Y_0$ separately among the treated units and among the control units in this study, and also calculate the average values of $Y_1$ separately among the treated and control units.
+
+
+#### 3f)
+
+Using the values in the table, calculate the __true__ conditional average treatment effect (CATE) when $X = 0$.
+
+
+#### 3g)
+
+Using the values in the table, calculate the __true__ CATE when $X = 1$.
+
+
+#### 3h)
+
+Considering your answers to 2f and 2g, what might you conclude about the role of $X$ in this study?
+
+
+#### 3i)
+
+Using the values in the table, calculate the __estimated__ CATE for __both__ $X = 1$ and $X = 0$.
+
+
+#### 3j)
+
+Suppose there was a large difference between the estimated ATE and the true ATE. What might drive such a deviation? What would do we call it when the difference between the estimate ATE and the true ATE goes to zero over repeated samples?
+
+
+## Question 4: Supervised Machine Learning
+
+Below is a table containing class labels for a binary categorical variable, $Y$, and information on three predictors - $X1$, $X2$, and $X3$. $\hat{p}_{\mathrm{logit}}$ represents the predicted probabilities from a logistic regression model that was trained to predict $Y$ with our three predictors. $\hat{Y}_{\mathrm{tree}}$ contains the predicted classes from a decision tree on the same task. 
+
+| $Y$ | $X1$       | $X2$       | $X3$       | $\hat{p}_{\mathrm{logit}}$ | $\hat{Y}_{\mathrm{tree}}$ |
+|---|----------|----------|----------|----------------------------|---------------------------|
+| 0 | 0.937075 | 0.719112 | 0.138710 | 0.438747                   | 0                         |
+| 0 | 0.286140 | 0.934672 | 0.988892 | 0.467486                   | 0                         |
+| 0 | 0.830448 | 0.255429 | 0.946668 | 0.715913                   | 0                         |
+| 1 | 0.519096 | 0.940015 | 0.514212 | 0.440106                   | 1                         |
+| 0 | 0.736588 | 0.978226 | 0.390203 | 0.239072                   | 0                         |
+| 1 | 0.134667 | 0.117487 | 0.905738 | 0.992029                   | 1                         |
+| 1 | 0.656992 | 0.474997 | 0.446970 | 0.833798                   | 1                         |
+| 1 | 0.705065 | 0.560333 | 0.836004 | 0.544788                   |                           |
+| 1 | 0.914806 | 0.457742 | 0.904031 | 0.405050                   |                           |
+| 1 | 0.641746 | 0.462293 | 0.082438 | 0.923012                   |                           |
+
+#### 4a)
+
+Is this data labelled or unlabelled? 
+
+
+#### 4b)
+
+Below is an image of the decision tree that was used to predict classes. Fill in the remaining 3 predicted classes according to the model structure. 
+
+![Decision Tree Model](figs/decision_tree_plot.png "Source: Christy")
+
+
+#### 4c)
+
+Calculate a confusion matrix for both the logistic regression and decision tree models. Utilise a 0.5 decision boundary where appropriate. 
+
+
+**Confusion Matrix: Logistic Regression**
+
+|               | Predicted: 0 | Predicted: 1 |
+|---------------|--------------|--------------|
+| **Actual: 0** |              |              |
+| **Actual: 1** |              |              |
+
+
+**Confusion Matrix: Decision Tree**
+
+|               | Predicted: 0 | Predicted: 1 |
+|---------------|--------------|--------------|
+| **Actual: 0** |              |              |
+| **Actual: 1** |              |              |
+
+
+#### 4d)
+
+Why might a 0.5 decision boundary be a non-optimal assumption?
+
+
+#### 4e)
+
+Using your confusion matrices, please calculate the (1) accuracy, (2) precision, and (3) recall of both the logistic regression and decision tree models for the __positive class.__
+
+
+#### 4f)
+
+Below is a test set that was also used to evaluate the decision tree’s model performance. This yielded the confusion matrix that follows. Our evaluation metric calculations have also changed. How have they changed, and what do you think is the likely reason for this?
+
+| $Y$ | $X_1$     | $X_2$     | $X_3$     | $\hat{Y}_{\mathrm{tree}}$ |
+|-----|-----------|-----------|-----------|---------------------------|
+| 1   | 0.2875775 | 0.5514350 | 0.24608773 | 1                        |
+| 0   | 0.7883051 | 0.4566147 | 0.04205953 | 0                        |
+| 0   | 0.4089769 | 0.9568333 | 0.32792072 | 1                        |
+| 1   | 0.8830174 | 0.4533342 | 0.95450365 | 0                        |
+| 1   | 0.9404673 | 0.6775706 | 0.88953932 | 0                        |
+| 0   | 0.0455565 | 0.5726334 | 0.69280341 | 1                        |
+| 1   | 0.5281055 | 0.1029247 | 0.64050681 | 1                        |
+| 1   | 0.8924190 | 0.8998250 | 0.99426978 | 0                        |
+
+
+**Decision Tree Confusion Matrix for Test Set**
+
+|               | Predicted: 0 | Predicted: 1 |
+|---------------|--------------|--------------|
+| **Actual: 0** |    1 (TN)    |    2 (FP)    |
+| **Actual: 1** |    3 (FN)    |    2 (TP)    |
+
+
+- Accuracy = 0.375
+- Precision = 0.50
+- Recall = 0.40
+
+
+#### 4g)
+
+Why might you want to use a random forest instead of a decision tree?
+
+
+## Question 5: Unsupervised Machine Learning
+
+For this question, we're going to look at clustering. Below is a scatterplot of 12 observations with two variables, $X1$ and $X2$. Suppose you have run a k-means clustering algorithm on this data. 
+
+![Scatterplot of Observations for Clustering](figs/kmeans_scatter.png "Source: Christy")
+
+![Cluster means](figs/clusters.png "Source: Christy")
+
+
+#### 5a)
+
+How many clusters have you calculated?
+
+
+#### 5b)
+
+Plot the centroids of the clusters on the scatter plot. Mark the spots with an 'X.'
+
+
+#### 5c)
+
+Draw a polygon around the observations in each cluster. 
+
+
+#### 5d)
+
+Which observations belong to which clusters?
+
+
+## Question 6: Text as Data
+
+In this question, we provide a short text extract below. All analysis will be in reference to this extract. The text contains four sentences, and each sentence should be considered a row in a document-feature matrix. 
+
+__Sir Keir Starmer, the Prime Minister of the United Kingdom, addressed Parliament on Wednesday. He discussed the potentially transformative effects of widespread AI adoption. The PM will be following Wednesday's briefing with a whistlestop tour around the industrial heartlands of the UK.__
+
+
+#### 6a) 
+
+Name and describe two ways of performing document selection for this text, and explain what a 'document' is in the context of quantitative text analysis. 
+
+
+#### 6b) 
+
+If the string “Sir Keir Starmer” were saved in a plain text file encoded with UTF-8, how big would the file be? If it were encoded with UTF-16, how big would the file be? _Hint: all the characters here are in the original ASCII character set, and assume your computer does not add any metadata to the plain text file you are saving._
+
+
+#### 6c)
+
+Eliminate all the stopwords in the sentences, and write the resulting sentences below.
+
+
+#### 6d)
+
+Describe any additional data cleaning required prior to tokenising the text.
+
+
+#### 6e)
+
+Now, tokenise your sentences. Draw a box around each token. Explain whether you are using unigrams, bigrams, or a mix of both. Justify your reasoning. 
+
+
+#### 6f)
+
+How many tokens are in the document? How many types are in the vocab?
+
+
+#### 6g)
+
+Create a document-feature matrix by hand and fill in the values. 
+
