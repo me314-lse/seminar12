@@ -2290,6 +2290,7 @@ window.Quarto = {
   <li><a href="#question-4-supervised-machine-learning" id="toc-question-4-supervised-machine-learning" class="nav-link" data-scroll-target="#question-4-supervised-machine-learning">Question 4: Supervised Machine Learning</a></li>
   <li><a href="#question-5-unsupervised-machine-learning" id="toc-question-5-unsupervised-machine-learning" class="nav-link" data-scroll-target="#question-5-unsupervised-machine-learning">Question 5: Unsupervised Machine Learning</a></li>
   <li><a href="#question-6-text-as-data" id="toc-question-6-text-as-data" class="nav-link" data-scroll-target="#question-6-text-as-data">Question 6: Text as Data</a></li>
+  <li><a href="#question-7-audio-as-data" id="toc-question-7-audio-as-data" class="nav-link" data-scroll-target="#question-7-audio-as-data">Question 7: Audio as Data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2328,6 +2329,7 @@ window.Quarto = {
 <li><p>Practice questions</p></li>
 <li><p>Q&amp;A</p></li>
 </ul>
+<p><strong>A quick note:</strong> These practice questions cover a selection of topics to help you revise. They are not a comprehensive review of the course, so please don’t read too much into which topics are or aren’t included here. For a fuller picture of what to study, please consult the study guides available on GitHub.</p>
 <section id="question-1-probability" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-probability">Question 1: Probability</h2>
 <p>Let’s suppose we have a fair (evenly-weighted) twenty-sided die. For any given roll of this die we can talk about each outcome as an ‘event’ in the ‘sample space’ (set of all possible outcomes). In this case, the sample space is the set of integers from 1 through 20. We could denote that as <span class="math inline">\(\Omega = \{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20\}\)</span>.</p>
@@ -3016,6 +3018,22 @@ window.Quarto = {
 <section id="g-2" class="level4">
 <h4 class="anchored" data-anchor-id="g-2">6g)</h4>
 <p>Create a document-feature matrix by hand and fill in the values.</p>
+</section>
+</section>
+<section id="question-7-audio-as-data" class="level2">
+<h2 class="anchored" data-anchor-id="question-7-audio-as-data">Question 7: Audio as Data</h2>
+<p>To get a continuous sound wave into a computer, we <strong>sample</strong> it (measure its amplitude at evenly spaced moments in time) and <strong>quantise</strong> those measurements (round each one to one of a fixed number of levels). Two settings control this: the <strong>sampling frequency</strong> (samples per second, in Hz) and the <strong>bit depth</strong> (the number of bits used to store each sample).</p>
+<section id="a-6" class="level4">
+<h4 class="anchored" data-anchor-id="a-6">7a)</h4>
+<p>A recording uses a bit depth of 3 bits. How many distinct amplitude levels can each sample take? Show your working.</p>
+</section>
+<section id="b-6" class="level4">
+<h4 class="anchored" data-anchor-id="b-6">7b)</h4>
+<p>You record 5 seconds of mono (single-channel) audio at a sampling frequency of 8,000 Hz and a bit depth of 8 bits. How many bytes of storage does the raw recording take up? Show your working. <em>Hint: 8 bits = 1 byte, and assume no metadata or compression.</em></p>
+</section>
+<section id="c-6" class="level4">
+<h4 class="anchored" data-anchor-id="c-6">7c)</h4>
+<p>Your recording is too large. Name one setting you could lower to shrink the file, and state what you sacrifice by doing so.</p>
 </section>
 </section>
 </section>

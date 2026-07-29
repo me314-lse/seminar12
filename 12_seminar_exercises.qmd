@@ -18,6 +18,8 @@ execute:
 
 - Q&A
 
+__A quick note:__ These practice questions cover a selection of topics to help you revise. They are not a comprehensive review of the course, so please don't read too much into which topics are or aren't included here. For a fuller picture of what to study, please consult the study guides available on GitHub.
+
 ## Question 1: Probability
 
 Let's suppose we have a fair (evenly-weighted) twenty-sided die. For any given roll of this die we can talk about each outcome as an 'event' in the 'sample space' (set of all possible outcomes). In this case, the sample space is the set of integers from 1 through 20. We could denote that as $\Omega = \{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20\}$.
@@ -356,5 +358,22 @@ How many tokens are in the document? How many types are in the vocab?
 
 #### 6g)
 
-Create a document-feature matrix by hand and fill in the values. 
+Create a document-feature matrix by hand and fill in the values.
+
+
+## Question 7: Audio as Data
+
+To get a continuous sound wave into a computer, we __sample__ it (measure its amplitude at evenly spaced moments in time) and __quantise__ those measurements (round each one to one of a fixed number of levels). Two settings control this: the __sampling frequency__ (samples per second, in Hz) and the __bit depth__ (the number of bits used to store each sample).
+
+#### 7a)
+
+A recording uses a bit depth of 3 bits. How many distinct amplitude levels can each sample take? Show your working.
+
+#### 7b)
+
+You record 5 seconds of mono (single-channel) audio at a sampling frequency of 8,000 Hz and a bit depth of 8 bits. How many bytes of storage does the raw recording take up? Show your working. _Hint: 8 bits = 1 byte, and assume no metadata or compression._
+
+#### 7c)
+
+Your recording is too large. Name one setting you could lower to shrink the file, and state what you sacrifice by doing so.
 
