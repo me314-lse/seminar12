@@ -2337,14 +2337,17 @@ window.Quarto = {
 <section id="a" class="level4">
 <h4 class="anchored" data-anchor-id="a">1a)</h4>
 <p>What is the probability of rolling a 10 on a single roll of this die?</p>
+<p><em>Answer: Probability is defined in terms of the chance of an event happening. In this case we know the sample space (given above), and that each event is equally likely. Given that there are 20 possible events, the chance of any one happening is 1 in 20, or 1/20, or 0.05.</em></p>
 </section>
 <section id="b" class="level4">
 <h4 class="anchored" data-anchor-id="b">1b)</h4>
 <p>What is the probability of rolling a 10 or less on a single roll of this die?</p>
+<p><em>Answer: This asks for the probability of the union (<span class="math inline">\(\cup\)</span>) of each event 1 through 10. We know that each of the events 1:10 is equally likely, at 1/20. Using additivity we can simply add these up to learn that rolling 10 or less has a probability of 10/20, or 0.5</em></p>
 </section>
 <section id="c" class="level4">
 <h4 class="anchored" data-anchor-id="c">1c)</h4>
 <p>Imagine we roll the die twice in sequence (so each roll is independent). What is the probability of the first roll being a 20 and the second roll being a 1? (Note this is called a ‘joint probability’ and could be formally written as <span class="math inline">\(P(roll1=20 \cap roll2=1)\)</span>.)</p>
+<p><em>Answer: This question is asking for the intersection (<span class="math inline">\(\cap\)</span>). Since the rolls are independent, we can simply multiply the probabilities of each event together to find probability of the events happening together. We know that the probability of rolling a 20 is 1/20, and the probability of rolling a 1 is also 1/20. Therefore, the joint probability is (1/20) * (1/20) = 1/400, or 0.0025.</em></p>
 </section>
 </section>
 <section id="question-2-statistics-and-regression" class="level2">
@@ -2503,22 +2506,27 @@ window.Quarto = {
 <section id="a-1" class="level4">
 <h4 class="anchored" data-anchor-id="a-1">2a)</h4>
 <p>Interpret the coefficient for <span class="math inline">\(G1\)</span>, including magnitude, direction, and statistical significance.</p>
+<p><em>Answer: Controlling for all other variables, a one grade point increase in first year grade is associated with an expected increase in third-year grade by 1.11023 points. This is significant at all conventional levels of statistical significance.</em></p>
 </section>
 <section id="b-1" class="level4">
 <h4 class="anchored" data-anchor-id="b-1">2b)</h4>
 <p>Interpret the <span class="math inline">\(R^2\)</span> value.</p>
+<p><em>Answer: The regression model with the aforementioned variables accounts for 65.45% of the total variance in our outcome. The remaining 34.55% is unexplained by the model and attributed to residuals (consisting of random error, unmeasured variables, &amp; noise).</em></p>
 </section>
 <section id="c-1" class="level4">
 <h4 class="anchored" data-anchor-id="c-1">2c)</h4>
 <p>How do you interpret the coefficient for the intercept? Is this meaningful in our context?</p>
+<p><em>Answer: G3 will be -2.25 when all explanatory variables equal 0. This is not meaningfully interpretable because it is not possible to have a negative grade.</em></p>
 </section>
 <section id="d" class="level4">
 <h4 class="anchored" data-anchor-id="d">2d)</h4>
 <p>Interpret the coefficient for <span class="math inline">\(addressurban\)</span>, including magnitude, direction, and statistical significance.</p>
+<p><em>Answer: Controlling for all other variables, those living in urban areas have an average expected third-year grade that is 0.42680 higher than those in rural areas. The p-value is greater than 0.05, and thus this is not statistically significant at any conventional social science level of significance. We fail to reject the null, and can conclude that there is no difference in expected third-year grade between those living in rural and urban areas.</em></p>
 </section>
 <section id="e" class="level4">
 <h4 class="anchored" data-anchor-id="e">2e)</h4>
 <p>Interpret the confidence intervals for <span class="math inline">\(traveltime\)</span>. What can we say about statistical significance by looking at the confidence intervals <strong>only</strong>.</p>
+<p><em>Answer: Controlling for all other variables, we can be 95% confident that the population parameter for traveltime lies between -0.6391 and 0.1847. 0 is contained within these intervals, and is thus a plausible value for the population parameter. As a result, we fail to reject the null hypothesis at the 5% significance level.</em></p>
 </section>
 </section>
 <section id="question-3-causal-inference" class="level2">
@@ -2641,38 +2649,69 @@ window.Quarto = {
 <section id="b-2" class="level4">
 <h4 class="anchored" data-anchor-id="b-2">3b)</h4>
 <p>Calculate the <strong>true</strong> average treatment effect (ATE). Be sure to show your working.</p>
+<p><em>Answer: (0+4+0+4+0+(−2)+4+5+5+5+4+3)/12 = 2.67</em></p>
 </section>
 <section id="c-2" class="level4">
 <h4 class="anchored" data-anchor-id="c-2">3c)</h4>
 <p>How many of the 24 potential outcomes in the table will be observed?</p>
+<p><em>Answer: 12 of the 24 potential outcomes will be observed.</em></p>
 </section>
 <section id="d-1" class="level4">
 <h4 class="anchored" data-anchor-id="d-1">3d)</h4>
 <p>Calculate the <strong>estimated</strong> ATE using only the observed outcomes. Be sure to show your working.</p>
+<p><em>Answer: ((26+26+5+24+30+30+17)/7) - ((28+16+12+25+16)/5) = 22.57 - 19.4 = 3.17</em></p>
 </section>
 <section id="e-1" class="level4">
 <h4 class="anchored" data-anchor-id="e-1">3e)</h4>
 <p>Calculate the average values of <span class="math inline">\(Y_0\)</span> separately among the treated units and among the control units in this study, and also calculate the average values of <span class="math inline">\(Y_1\)</span> separately among the treated and control units.</p>
+<p><em>Answer:</em></p>
+<ul>
+<li>Where <span class="math inline">\(D = 1\)</span>:
+<ul>
+<li><span class="math inline">\(Y_0\)</span>: (26+22+5+19+25+26+14)/7 = 19.57</li>
+<li><span class="math inline">\(Y_1\)</span>: (26+26+5+24+30+30+17)/7 = 22.57</li>
+</ul></li>
+<li>Where <span class="math inline">\(D = 0\)</span>:
+<ul>
+<li><span class="math inline">\(Y_0\)</span>: (28+16+12+25+16)/5 = 19.4</li>
+<li><span class="math inline">\(Y_1\)</span>: (28+20+10+29+21)/5 = 21.6</li>
+</ul></li>
+</ul>
 </section>
 <section id="f" class="level4">
 <h4 class="anchored" data-anchor-id="f">3f)</h4>
 <p>Using the values in the table, calculate the <strong>true</strong> conditional average treatment effect (CATE) when <span class="math inline">\(X = 0\)</span>.</p>
+<p><em>Answer: (0+4+0+4+0)/5 = 1.6</em></p>
 </section>
 <section id="g" class="level4">
 <h4 class="anchored" data-anchor-id="g">3g)</h4>
 <p>Using the values in the table, calculate the <strong>true</strong> CATE when <span class="math inline">\(X = 1\)</span>.</p>
+<p><em>Answer: (-2+4+5+5+5+4+3)/7 = 3.43</em></p>
 </section>
 <section id="h" class="level4">
 <h4 class="anchored" data-anchor-id="h">3h)</h4>
 <p>Considering your answers to 3f and 3g, what might you conclude about the role of <span class="math inline">\(X\)</span> in this study?</p>
+<p><em>Answer: The ATE is not constant across both levels of <span class="math inline">\(X\)</span>. There appears to be treatment effect heterogeneity, as the true ATE is higher for those units where <span class="math inline">\(X = 1\)</span>. <span class="math inline">\(X\)</span> is a moderator of treatment effect.</em></p>
 </section>
 <section id="i" class="level4">
 <h4 class="anchored" data-anchor-id="i">3i)</h4>
 <p>Using the values in the table, calculate the <strong>estimated</strong> CATE for <strong>both</strong> <span class="math inline">\(X = 1\)</span> and <span class="math inline">\(X = 0\)</span>.</p>
+<p><em>Answer:</em></p>
+<ul>
+<li>Where <span class="math inline">\(X = 0\)</span>:
+<ul>
+<li>((26+26+5)/3) - ((28+16)/2) = 19 - 22 = -3</li>
+</ul></li>
+<li>Where <span class="math inline">\(X = 1\)</span>:
+<ul>
+<li>((24+30+30+17)/4) - ((12+25+16)/3) = 25.25 - 17.67 = 7.58</li>
+</ul></li>
+</ul>
 </section>
 <section id="j" class="level4">
 <h4 class="anchored" data-anchor-id="j">3j)</h4>
 <p>Suppose there was a large difference between the estimated ATE and the true ATE. What might drive such a deviation? What do we call it when the difference between the estimated ATE and the true ATE goes to zero over repeated samples?</p>
+<p><em>Answer: A confounder or sampling error could drive this difference. We would call it ‘unbiased’ when the difference between the estimated and true ATE goes to zero over repeated samples.</em></p>
 </section>
 </section>
 <section id="question-4-supervised-machine-learning" class="level2">
@@ -2783,6 +2822,7 @@ window.Quarto = {
 <section id="a-3" class="level4">
 <h4 class="anchored" data-anchor-id="a-3">4a)</h4>
 <p>Is this data labelled or unlabelled?</p>
+<p><em>Answer: The data is labelled as we observe all observed values of <span class="math inline">\(Y\)</span>.</em></p>
 </section>
 <section id="b-3" class="level4">
 <h4 class="anchored" data-anchor-id="b-3">4b)</h4>
@@ -2793,10 +2833,12 @@ window.Quarto = {
 <figcaption>Decision Tree Model</figcaption>
 </figure>
 </div>
+<p><em>Answer: 1, 0, 1</em></p>
 </section>
 <section id="c-3" class="level4">
 <h4 class="anchored" data-anchor-id="c-3">4c)</h4>
 <p>Calculate a confusion matrix for both the logistic regression and decision tree models. Utilise a 0.5 decision boundary where appropriate.</p>
+<p><em>Answer:</em></p>
 <p><strong>Confusion Matrix: Logistic Regression</strong></p>
 <table class="caption-top table">
 <thead>
@@ -2809,13 +2851,13 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><strong>Actual: 0</strong></td>
-<td></td>
-<td></td>
+<td>3 (TN)</td>
+<td>1 (FP)</td>
 </tr>
 <tr class="even">
 <td><strong>Actual: 1</strong></td>
-<td></td>
-<td></td>
+<td>2 (FN)</td>
+<td>4 (TP)</td>
 </tr>
 </tbody>
 </table>
@@ -2831,13 +2873,13 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><strong>Actual: 0</strong></td>
-<td></td>
-<td></td>
+<td>4 (TN)</td>
+<td>0 (FP)</td>
 </tr>
 <tr class="even">
 <td><strong>Actual: 1</strong></td>
-<td></td>
-<td></td>
+<td>1 (FN)</td>
+<td>5 (TP)</td>
 </tr>
 </tbody>
 </table>
@@ -2845,10 +2887,26 @@ window.Quarto = {
 <section id="d-2" class="level4">
 <h4 class="anchored" data-anchor-id="d-2">4d)</h4>
 <p>Why might a 0.5 decision boundary be a non-optimal assumption?</p>
+<p><em>Answer: You may be able to yield better discriminatory capacity from a different decision boundary</em></p>
 </section>
 <section id="e-2" class="level4">
 <h4 class="anchored" data-anchor-id="e-2">4e)</h4>
 <p>Using your confusion matrices, please calculate the (1) accuracy, (2) precision, and (3) recall of both the logistic regression and decision tree models for the <strong>positive class.</strong></p>
+<p><em>Answer:</em></p>
+<ul>
+<li>Logistic Regression
+<ul>
+<li>Accuracy = (4 + 3) / 10 = 0.70</li>
+<li>Precision = 4 / (4 + 1) = 0.80</li>
+<li>Recall = 4 / (4 + 2) = 0.67</li>
+</ul></li>
+<li>Decision Tree
+<ul>
+<li>Accuracy = (5 + 4) / 10 = 0.90</li>
+<li>Precision = 5 / (5 + 0) = 1.00</li>
+<li>Recall = 5 / (5 + 1) = 0.83</li>
+</ul></li>
+</ul>
 </section>
 <section id="f-1" class="level4">
 <h4 class="anchored" data-anchor-id="f-1">4f)</h4>
@@ -2949,10 +3007,12 @@ window.Quarto = {
 <li>Precision = 0.50</li>
 <li>Recall = 0.40</li>
 </ul>
+<p><em>Answer: The model performs much worse out-of-sample, and this is likely a product of overfitting to the training data. Alternatively, the test set could be sampled from a different data manifold, so the model will do worse.</em></p>
 </section>
 <section id="g-1" class="level4">
 <h4 class="anchored" data-anchor-id="g-1">4g)</h4>
 <p>Why might you want to use a random forest instead of a decision tree?</p>
+<p><em>Answer: We reduce the risk of overfitting by (1) aggregating over many trees, (2) bagging, which is training each tree on its own bootstrapped sample, and (3) random feature selection.</em></p>
 </section>
 </section>
 <section id="question-5-unsupervised-machine-learning" class="level2">
@@ -2973,6 +3033,7 @@ window.Quarto = {
 <section id="a-4" class="level4">
 <h4 class="anchored" data-anchor-id="a-4">5a)</h4>
 <p>How many clusters have you calculated?</p>
+<p><em>Answer: 3</em></p>
 </section>
 <section id="b-4" class="level4">
 <h4 class="anchored" data-anchor-id="b-4">5b)</h4>
@@ -2985,6 +3046,21 @@ window.Quarto = {
 <section id="d-3" class="level4">
 <h4 class="anchored" data-anchor-id="d-3">5d)</h4>
 <p>Which observations belong to which clusters?</p>
+<p><em>Answer:</em></p>
+<ul>
+<li>Cluster A
+<ul>
+<li>1, 5, 9, 12</li>
+</ul></li>
+<li>Cluster B
+<ul>
+<li>2, 4, 6, 8</li>
+</ul></li>
+<li>Cluster C
+<ul>
+<li>3, 7, 10, 11</li>
+</ul></li>
+</ul>
 </section>
 </section>
 <section id="question-6-text-as-data" class="level2">
@@ -2994,26 +3070,48 @@ window.Quarto = {
 <section id="a-5" class="level4">
 <h4 class="anchored" data-anchor-id="a-5">6a)</h4>
 <p>Name and describe two ways of performing document selection for this text, and explain what a ‘document’ is in the context of quantitative text analysis.</p>
+<p><em>Answer: Metadata-based selection or Keyword/dictionary-based selection. A document is the basic unit of analysis (row) in QTA.</em></p>
 </section>
 <section id="b-5" class="level4">
 <h4 class="anchored" data-anchor-id="b-5">6b)</h4>
 <p>If the string “Sir Keir Starmer” were saved in a plain text file encoded with UTF-8, how big would the file be? If it were encoded with UTF-16, how big would the file be? <em>Hint: all the characters here are in the original ASCII character set, and assume your computer does not add any metadata to the plain text file you are saving.</em></p>
+<p><em>Answer: For UTF-8: multiply the number of characters by 1 byte (or 8 bits); For UTF-16: multiply the number of characters by 2 bytes (or 16 bits). So here: UTF-8: 16 bytes/128 bits; UTF-16: 32 bytes/256 bits.</em></p>
 </section>
 <section id="c-5" class="level4">
 <h4 class="anchored" data-anchor-id="c-5">6c)</h4>
 <p>Eliminate all the stopwords in the sentences, and write the resulting sentences below.</p>
+<p><em>Answer</em></p>
+<ul>
+<li>Sir Keir Starmer, Prime Minister United Kingdom addressed Parliament Wednesday.</li>
+<li>discussed potentially transformative effects widespread AI adoption</li>
+<li>PM (will) following Wednesday’s briefing whistlestop tour around industrial heartlands UK.</li>
+</ul>
 </section>
 <section id="d-4" class="level4">
 <h4 class="anchored" data-anchor-id="d-4">6d)</h4>
 <p>Describe any additional data cleaning required prior to tokenising the text.</p>
+<p><em>Answer</em></p>
+<ul>
+<li>Case-folding</li>
+<li>Punctuation removal</li>
+<li>Named entity recognition</li>
+<li>Stemming/lemmatization if necessary</li>
+</ul>
 </section>
 <section id="e-3" class="level4">
 <h4 class="anchored" data-anchor-id="e-3">6e)</h4>
 <p>Now, tokenise your sentences. Draw a box around each token. Explain whether you are using unigrams, bigrams, or a mix of both. Justify your reasoning.</p>
+<p><em>Answer: Mix of uni and bigrams</em></p>
+<ul>
+<li>Sir, Keir Starmer, Prime Minister, United Kingdom, address, Parliament, Wednesday</li>
+<li>discuss, potential, transform, effect, widespread, AI, adopt</li>
+<li>PM, will, follow, Wednesday, briefing, whistlestop, tour, around industrial, heartland, UK</li>
+</ul>
 </section>
 <section id="f-2" class="level4">
 <h4 class="anchored" data-anchor-id="f-2">6f)</h4>
 <p>How many tokens are in the document? How many types are in the vocab?</p>
+<p><em>Answer: 24 tokens and 23 types</em></p>
 </section>
 <section id="g-2" class="level4">
 <h4 class="anchored" data-anchor-id="g-2">6g)</h4>
@@ -3026,14 +3124,17 @@ window.Quarto = {
 <section id="a-6" class="level4">
 <h4 class="anchored" data-anchor-id="a-6">7a)</h4>
 <p>A recording uses a bit depth of 3 bits. How many distinct amplitude levels can each sample take? Show your working.</p>
+<p><em>Answer: With <span class="math inline">\(n\)</span> bits we can represent <span class="math inline">\(2^n\)</span> patterns, so a 3-bit sample can take <span class="math inline">\(2^3 = 8\)</span> distinct amplitude levels.</em></p>
 </section>
 <section id="b-6" class="level4">
 <h4 class="anchored" data-anchor-id="b-6">7b)</h4>
 <p>You record 5 seconds of mono (single-channel) audio at a sampling frequency of 8,000 Hz and a bit depth of 8 bits. How many bytes of storage does the raw recording take up? Show your working. <em>Hint: 8 bits = 1 byte, and assume no metadata or compression.</em></p>
+<p><em>Answer: Total bits = sampling frequency <span class="math inline">\(\times\)</span> bit depth <span class="math inline">\(\times\)</span> duration = <span class="math inline">\(8{,}000 \times 8 \times 5 = 320{,}000\)</span> bits. Dividing by 8 bits per byte gives <span class="math inline">\(320{,}000 / 8 = 40{,}000\)</span> bytes.</em></p>
 </section>
 <section id="c-6" class="level4">
 <h4 class="anchored" data-anchor-id="c-6">7c)</h4>
 <p>Your recording is too large. Name one setting you could lower to shrink the file, and state what you sacrifice by doing so.</p>
+<p><em>Answer: Either setting works. Lowering the sampling frequency shrinks the file but loses higher-frequency (higher-pitched) detail, because fast variations fall between samples. Lowering the bit depth shrinks the file but quantises amplitude more coarsely, so loudness is captured less faithfully. Both reduce quality; sampling always causes some information loss.</em></p>
 </section>
 </section>
 </section>

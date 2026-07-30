@@ -9,7 +9,7 @@ format:
         code-overflow: wrap
 execute:
   echo: true
-  eval: false
+  eval: true
 ---
 
 # Plan for today:
@@ -30,15 +30,19 @@ Note that we can reason both about individual events in the sample space (e.g. r
 
 What is the probability of rolling a 10 on a single roll of this die? 
 
+_Answer: Probability is defined in terms of the chance of an event happening. In this case we know the sample space (given above), and that each event is equally likely. Given that there are 20 possible events, the chance of any one happening is 1 in 20, or 1/20, or 0.05._
 
 #### 1b)
 
 What is the probability of rolling a 10 or less on a single roll of this die?
 
+_Answer: This asks for the probability of the union ($\cup$) of each event 1 through 10. We know that each of the events 1:10 is equally likely, at 1/20. Using additivity we can simply add these up to learn that rolling 10 or less has a probability of 10/20, or 0.5_
 
 #### 1c)
 
 Imagine we roll the die twice in sequence (so each roll is independent). What is the probability of the first roll being a 20 and the second roll being a 1? (Note this is called a 'joint probability' and could be formally written as $P(roll1=20 \cap roll2=1)$.)
+
+_Answer: This question is asking for the intersection ($\cap$). Since the rolls are independent, we can simply multiply the probabilities of each event together to find probability of the events happening together. We know that the probability of rolling a 20 is 1/20, and the probability of rolling a 1 is also 1/20. Therefore, the joint probability is (1/20) * (1/20) = 1/400, or 0.0025._
 
 
 ## Question 2: Statistics and Regression
@@ -105,25 +109,32 @@ Multiple R-squared:  0.6545,	Adjusted R-squared:  0.6483
 
 Interpret the coefficient for $G1$, including magnitude, direction, and statistical significance. 
 
+_Answer: Controlling for all other variables, a one grade point increase in first year grade is associated with an expected increase in third-year grade by 1.11023 points. This is significant at all conventional levels of statistical significance._
 
 #### 2b)
 
 Interpret the $R^2$ value. 
 
+_Answer: The regression model with the aforementioned variables accounts for 65.45% of the total variance in our outcome. The remaining 34.55% is unexplained by the model and attributed to residuals (consisting of random error, unmeasured variables, & noise)._
 
 #### 2c)
 
 How do you interpret the coefficient for the intercept? Is this meaningful in our context?
+
+_Answer: G3 will be -2.25 when all explanatory variables equal 0. This is not meaningfully interpretable because it is not possible to have a negative grade._
 
 
 #### 2d)
 
 Interpret the coefficient for $addressurban$, including magnitude, direction, and statistical significance. 
 
+_Answer: Controlling for all other variables, those living in urban areas have an average expected third-year grade that is 0.42680 higher than those in rural areas. The p-value is greater than 0.05, and thus this is not statistically significant at any conventional social science level of significance. We fail to reject the null, and can conclude that there is no difference in expected third-year grade between those living in rural and urban areas._
 
 #### 2e) 
 
 Interpret the confidence intervals for $traveltime$. What can we say about statistical significance by looking at the confidence intervals __only__.
+
+_Answer: Controlling for all other variables, we can be 95% confident that the population parameter for traveltime lies between -0.6391 and 0.1847. 0 is contained within these intervals, and is thus a plausible value for the population parameter. As a result, we fail to reject the null hypothesis at the 5% significance level._
 
 
 ## Question 3: Causal Inference
@@ -146,54 +157,79 @@ The table below presents a hypothetical study involving twelve units. Potential 
 | 12   | 14    | 17    | 1   | 1   |     |
 
 
+
 #### 3a)
 
 Fill in the _observed_ values of $Y$ for each observation.
-
 
 #### 3b)
 
 Calculate the __true__ average treatment effect (ATE). Be sure to show your working.
 
+_Answer: (0+4+0+4+0+(−2)+4+5+5+5+4+3)/12 = 2.67_
 
 #### 3c)
 
 How many of the 24 potential outcomes in the table will be observed?
 
+_Answer: 12 of the 24 potential outcomes will be observed._
 
 #### 3d)
 
 Calculate the __estimated__ ATE using only the observed outcomes. Be sure to show your working. 
 
+_Answer: ((26+26+5+24+30+30+17)/7) - ((28+16+12+25+16)/5) = 22.57 - 19.4 = 3.17_
 
 #### 3e)
 
 Calculate the average values of $Y_0$ separately among the treated units and among the control units in this study, and also calculate the average values of $Y_1$ separately among the treated and control units.
+
+_Answer:_
+
+- Where $D = 1$: 
+    - $Y_0$: (26+22+5+19+25+26+14)/7 = 19.57
+    - $Y_1$: (26+26+5+24+30+30+17)/7 = 22.57
+
+- Where $D = 0$:
+    - $Y_0$: (28+16+12+25+16)/5 = 19.4
+    - $Y_1$: (28+20+10+29+21)/5 = 21.6
 
 
 #### 3f)
 
 Using the values in the table, calculate the __true__ conditional average treatment effect (CATE) when $X = 0$.
 
+_Answer: (0+4+0+4+0)/5 = 1.6_
 
 #### 3g)
 
 Using the values in the table, calculate the __true__ CATE when $X = 1$.
 
+_Answer: (-2+4+5+5+5+4+3)/7 = 3.43_
 
 #### 3h)
 
 Considering your answers to 3f and 3g, what might you conclude about the role of $X$ in this study?
 
+_Answer: The ATE is not constant across both levels of $X$. There appears to be treatment effect heterogeneity, as the true ATE is higher for those units where $X = 1$. $X$ is a moderator of treatment effect._
 
 #### 3i)
 
 Using the values in the table, calculate the __estimated__ CATE for __both__ $X = 1$ and $X = 0$.
 
+_Answer:_
+
+- Where $X = 0$:
+    - ((26+26+5)/3) - ((28+16)/2) = 19 - 22 = -3
+- Where $X = 1$:
+    - ((24+30+30+17)/4) - ((12+25+16)/3) = 25.25 - 17.67 = 7.58
 
 #### 3j)
 
 Suppose there was a large difference between the estimated ATE and the true ATE. What might drive such a deviation? What do we call it when the difference between the estimated ATE and the true ATE goes to zero over repeated samples?
+
+
+_Answer: A confounder or sampling error could drive this difference. We would call it 'unbiased' when the difference between the estimated and true ATE goes to zero over repeated samples._
 
 
 ## Question 4: Supervised Machine Learning
@@ -217,6 +253,7 @@ Below is a table containing class labels for a binary categorical variable, $Y$,
 
 Is this data labelled or unlabelled? 
 
+_Answer: The data is labelled as we observe all observed values of $Y$._
 
 #### 4b)
 
@@ -224,36 +261,53 @@ Below is an image of the decision tree that was used to predict classes. Fill in
 
 ![Decision Tree Model](figs/decision_tree_plot.png "Source: Christy")
 
+_Answer: 1, 0, 1_
+
 
 #### 4c)
 
 Calculate a confusion matrix for both the logistic regression and decision tree models. Utilise a 0.5 decision boundary where appropriate. 
 
+_Answer:_
 
 **Confusion Matrix: Logistic Regression**
 
 |               | Predicted: 0 | Predicted: 1 |
 |---------------|--------------|--------------|
-| **Actual: 0** |              |              |
-| **Actual: 1** |              |              |
+| **Actual: 0** |    3 (TN)    |     1 (FP)   |
+| **Actual: 1** |    2 (FN)    |     4 (TP)   |
 
 
 **Confusion Matrix: Decision Tree**
 
 |               | Predicted: 0 | Predicted: 1 |
 |---------------|--------------|--------------|
-| **Actual: 0** |              |              |
-| **Actual: 1** |              |              |
+| **Actual: 0** |    4 (TN)    |    0 (FP)    |
+| **Actual: 1** |    1 (FN)    |    5 (TP)    |
 
 
 #### 4d)
 
 Why might a 0.5 decision boundary be a non-optimal assumption?
 
+_Answer: You may be able to yield better discriminatory capacity from a different decision boundary_
+
 
 #### 4e)
 
 Using your confusion matrices, please calculate the (1) accuracy, (2) precision, and (3) recall of both the logistic regression and decision tree models for the __positive class.__
+
+_Answer:_
+
+- Logistic Regression
+    - Accuracy = (4 + 3) / 10 = 0.70
+    - Precision = 4 / (4 + 1) = 0.80
+    - Recall = 4 / (4 + 2) = 0.67
+
+- Decision Tree
+    - Accuracy = (5 + 4) / 10 = 0.90
+    - Precision = 5 / (5 + 0) = 1.00
+    - Recall = 5 / (5 + 1) = 0.83
 
 
 #### 4f)
@@ -284,10 +338,14 @@ Below is a test set that was also used to evaluate the decision tree’s model p
 - Precision = 0.50
 - Recall = 0.40
 
+_Answer: The model performs much worse out-of-sample, and this is likely a product of overfitting to the training data. Alternatively, the test set could be sampled from a different data manifold, so the model will do worse._
+
 
 #### 4g)
 
 Why might you want to use a random forest instead of a decision tree?
+
+_Answer: We reduce the risk of overfitting by (1) aggregating over many trees, (2) bagging, which is training each tree on its own bootstrapped sample, and (3) random feature selection._
 
 
 ## Question 5: Unsupervised Machine Learning
@@ -303,20 +361,28 @@ For this question, we're going to look at clustering. Below is a scatterplot of 
 
 How many clusters have you calculated?
 
+_Answer: 3_
 
 #### 5b)
 
 Plot the centroids of the clusters on the scatter plot. Mark the spots with an 'X.'
 
-
 #### 5c)
 
 Draw a polygon around the observations in each cluster. 
 
-
 #### 5d)
 
 Which observations belong to which clusters?
+
+_Answer:_
+
+- Cluster A
+    - 1, 5, 9, 12
+- Cluster B
+    - 2, 4, 6, 8
+- Cluster C 
+    - 3, 7, 10, 11
 
 
 ## Question 6: Text as Data
@@ -330,30 +396,55 @@ __Sir Keir Starmer, the Prime Minister of the United Kingdom, addressed Parliame
 
 Name and describe two ways of performing document selection for this text, and explain what a 'document' is in the context of quantitative text analysis. 
 
+_Answer: Metadata-based selection or Keyword/dictionary-based selection. A document is the basic unit of analysis (row) in QTA._
+
 
 #### 6b) 
 
 If the string “Sir Keir Starmer” were saved in a plain text file encoded with UTF-8, how big would the file be? If it were encoded with UTF-16, how big would the file be? _Hint: all the characters here are in the original ASCII character set, and assume your computer does not add any metadata to the plain text file you are saving._
 
+_Answer: For UTF-8: multiply the number of characters by 1 byte (or 8 bits); For UTF-16: multiply the number of characters by 2 bytes (or 16 bits). So here: UTF-8: 16 bytes/128 bits; UTF-16: 32 bytes/256 bits._
+ 
 
 #### 6c)
 
 Eliminate all the stopwords in the sentences, and write the resulting sentences below.
+
+_Answer_
+
+- Sir Keir Starmer, Prime Minister United Kingdom addressed Parliament Wednesday.
+- discussed potentially transformative effects widespread AI adoption
+- PM (will) following Wednesday's briefing whistlestop tour around industrial heartlands UK.
 
 
 #### 6d)
 
 Describe any additional data cleaning required prior to tokenising the text.
 
+_Answer_
+
+- Case-folding
+- Punctuation removal
+- Named entity recognition
+- Stemming/lemmatization if necessary
+
 
 #### 6e)
 
 Now, tokenise your sentences. Draw a box around each token. Explain whether you are using unigrams, bigrams, or a mix of both. Justify your reasoning. 
 
+_Answer: Mix of uni and bigrams_
+
+- Sir, Keir Starmer, Prime Minister, United Kingdom, address, Parliament, Wednesday
+- discuss, potential, transform, effect, widespread, AI, adopt
+- PM, will, follow, Wednesday, briefing, whistlestop, tour, around industrial, heartland, UK
+
 
 #### 6f)
 
 How many tokens are in the document? How many types are in the vocab?
+
+_Answer: 24 tokens and 23 types_
 
 
 #### 6g)
@@ -369,11 +460,16 @@ To get a continuous sound wave into a computer, we __sample__ it (measure its am
 
 A recording uses a bit depth of 3 bits. How many distinct amplitude levels can each sample take? Show your working.
 
+_Answer: With $n$ bits we can represent $2^n$ patterns, so a 3-bit sample can take $2^3 = 8$ distinct amplitude levels._
+
 #### 7b)
 
 You record 5 seconds of mono (single-channel) audio at a sampling frequency of 8,000 Hz and a bit depth of 8 bits. How many bytes of storage does the raw recording take up? Show your working. _Hint: 8 bits = 1 byte, and assume no metadata or compression._
+
+_Answer: Total bits = sampling frequency $\times$ bit depth $\times$ duration = $8{,}000 \times 8 \times 5 = 320{,}000$ bits. Dividing by 8 bits per byte gives $320{,}000 / 8 = 40{,}000$ bytes._
 
 #### 7c)
 
 Your recording is too large. Name one setting you could lower to shrink the file, and state what you sacrifice by doing so.
 
+_Answer: Either setting works. Lowering the sampling frequency shrinks the file but loses higher-frequency (higher-pitched) detail, because fast variations fall between samples. Lowering the bit depth shrinks the file but quantises amplitude more coarsely, so loudness is captured less faithfully. Both reduce quality; sampling always causes some information loss._
